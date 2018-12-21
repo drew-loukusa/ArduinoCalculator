@@ -12,7 +12,8 @@ This calculator supports following features:
 - Results as floats
 - Result Rollover:
       Once you've calculated a result, press another operator key to use that result as the input to another operation.
-      Example: \n
+      Example: 
+      
               LCD: 12+3 = 
                    10
               >> Press "\*" 
