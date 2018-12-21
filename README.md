@@ -12,7 +12,7 @@ This calculator supports following features:
 - Results as floats
 - Result Rollover:
       Once you've calculated a result, press another operator key to use that result as the input to another operation.
-      Example: 
+      Example: \n
               LCD: 12+3 = 
                    10
               >> Press "\*" 
@@ -31,7 +31,9 @@ I designed a basic FSM (finite state machine) to model the workings of the calcu
 
 ![alt text](https://github.com/drew-loukusa/ArduinoCalculator/blob/master/CalculatorFSM.jpg)
 
-I used the following tutorials to setup my wiring and as a basis for my code.
-LCD Wiring and Code: https://www.arduino.cc/en/Tutorial/HelloWorld
+I used the following tutorials to setup my wiring and as a basis for my code:
+
+LCD Wiring and Code: https://www.arduino.cc/en/Tutorial/HelloWorld 
+
 Keypad Wiring and Code: https://playground.arduino.cc/Main/KeypadTutorial
 
