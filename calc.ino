@@ -1,3 +1,8 @@
+/*
+Written by Drew Loukusa 
+20 Dec 2018
+*/
+
 
 #include <LiquidCrystal.h>
 #include <Keypad.h>
@@ -60,9 +65,9 @@ void loop() {
 	switch(state){ 	    
 		case INITIAL_STATE:
 			Serial.println("INITIAL");			
-			key = get_valid_key(); 
-			if (is_num(key)) { //INPUT_NUM          			
-				lcd.print(key); 
+			key = get_valid_key(); 			//This is what determines the next state
+			if (is_num(key)) { //INPUT_NUM            This would be a sub-switch statement but
+				lcd.print(key); 		// I needed the input key to determine the next state
 				num_a += key;
 				state = A_SET_STATE;             
 			}       
@@ -93,8 +98,7 @@ void loop() {
 			break;
 
 		case OP_SET_STATE:
-			Serial.println("OP_SET");    
-				
+			Serial.println("OP_SET");    				
 			key = get_valid_key();		
 			if (is_num(key) || key == 'C'){          
 				if(is_num(key)){  //INPUT_NUM
@@ -126,8 +130,8 @@ void loop() {
 					result = calculate_result();
 					if(!bad_result){
 						lcd.print(" = ");
-						lcd.setCursor(0,1);
-						lcd.print(result);
+						lcd.setCursor(0,1);  // Move cursor down a line...
+						lcd.print(result);   // So the result prints on a new line.
 						state = RESULT_SET_STATE;
 					} 
 					else{ 
@@ -217,12 +221,13 @@ bool is_op(char key){
   }  
   return false;
 }
+
 float calculate_result(){
 	if     (op == '+'){result = num_a.toFloat()+num_b.toFloat();} 
 	else if(op == '-'){result = num_a.toFloat()-num_b.toFloat();}
 	else if(op == '*'){result = num_a.toFloat()*num_b.toFloat();}
 	else if(op == '/'){
-		if(num_a != "" && num_b.toInt() == 0){
+		if(num_a != "" && num_b.toInt() == 0){  // Display an error message if user tries to divide by zero
 			lcd.clear();
 			lcd.print("No div by 0!");			
 			bad_result = true;
