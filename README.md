@@ -16,12 +16,12 @@ This calculator supports following features:
       
               LCD: 12+3 = 
                    10
-              >> Press "\*" 
-              LCD: 10\*
+              >> Press "*" 
+              LCD: 10*
               >> Press "5"
-              LCD: 10\*5
+              LCD: 10*5
               >> Press "="
-              LCD: 10\*5=
+              LCD: 10*5=
                    50
 
 Future Additions:
