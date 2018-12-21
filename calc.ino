@@ -128,15 +128,15 @@ void loop() {
 				if( key == '#'){ //INPUT_POUND
 					Serial.println("\tINPUT_POUND");
 					result = calculate_result();
-					if(!bad_result){
+					if(!bad_result){  	
 						lcd.print(" = ");
 						lcd.setCursor(0,1);  // Move cursor down a line...
 						lcd.print(result);   // So the result prints on a new line.
 						state = RESULT_SET_STATE;
 					} 
-					else{ 
+					else{ //If user tried to divide by zero then don't print '=' or 'result'.
 						bad_result = false;
-						while(true){
+						while(true){ //User must press the clear key 'C' to continue
 							char key = keypad.getKey();
 							if(key == 'C') break;
 						}
@@ -156,9 +156,9 @@ void loop() {
 			Serial.println("RESULT_SET");			
 			key = get_valid_key();		
 			if(!is_num(key) && key != '#'){          
-				if(is_op(key)){ //SET_A_TO_RESULT
-					Serial.println("\tSET_A_TO_RESULT");
-					num_a = String(result); 
+				if(is_op(key)){ //SET_A_TO_RESULT	-User has entered an other operator, and is using... 
+					Serial.println("\tSET_A_TO_RESULT");    // result carry-over
+					num_a = String(result); 		
 					num_b = "";
 					op = char_to_op(key);
 					lcd.clear();
